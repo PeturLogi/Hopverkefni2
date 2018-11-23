@@ -21,6 +21,18 @@ html { /* stylelint-disable-line */
   font-size: 16px;
 }
 
+main {
+  max-width: $max-width;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  margin: 0 auto;
+
+  @media (min-width: $max-width) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
 header { /* stylelint-disable-line */
   font-family: $font-head;
 }
@@ -30,4 +42,6 @@ img { /* stylelint-disable-line */
 }
 
 // TODO import
-@import "./index.scss";
+@import "./header.scss";
+@import "./items.scss";
+@import "./item.scss";

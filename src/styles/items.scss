@@ -1,0 +1,16 @@
+@import "config";
+
+.items {
+  &__row {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -0.5 * $gutter;
+    margin-left: -0.5 * $gutter;
+  }
+
+  &__col {
+    width: 33.33333%;
+    padding-right: 0.5 * $gutter;
+    padding-left: 0.5 * $gutter;
+  }
+}
