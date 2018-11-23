@@ -59,7 +59,6 @@ function fill(element) {
   fetchJson()
     .then((data) => {
       const list = data.lectures;
-      console.log(list);
       element.appendChild(createPageElements(list));
     });
 }
