@@ -2,5 +2,22 @@
 
 .item {
   display: flex;
+  height: 100%;
+  padding-bottom: $gutter;
   flex-direction: column-reverse;
+  flex: 1;
+  background-color: $color-2;
+
+  &__title {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  &__category {
+    text-transform: uppercase;
+  }
+
+  &__image {
+
+  }
 }
