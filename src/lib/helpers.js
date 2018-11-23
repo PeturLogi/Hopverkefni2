@@ -40,7 +40,6 @@ function asImage(imageURL) {
 
 function createPageElements(pageData) {
   const itemsRow = el('div', 'items__row', null);
-  const items = el('div', 'items', itemsRow);
   pageData.forEach((page) => {
     const itemsCol = el('div', 'items__col', null);
     const item = el('div', 'item', null);
@@ -52,21 +51,16 @@ function createPageElements(pageData) {
     item.appendChild(itemImage);
     itemsCol.appendChild(item);
     itemsRow.appendChild(itemsCol);
-    
   });
-  return items;
+  return itemsRow;
 }
 
 function fill(element) {
   fetchJson()
     .then((data) => {
       const list = data.lectures;
-      console.log(list);
       element.appendChild(createPageElements(list));
     });
 }
 
-export {
-  empty,
-  fill
-};
+export { empty, fill };
