@@ -1,0 +1,21 @@
+@import "./config.scss";
+.button {
+    &__col {
+      display: flex;
+      justify-content: center;
+    }
+  
+    &__container {
+      display: flex;
+      justify-content: center;
+      max-width: $max-width;
+    }
+  
+    &__btn {
+      margin-right: $gutter;
+      background-color: $color-4;
+      border: $color-1 solid 1px;
+      border-radius: 10px;
+    }
+  }
+  
