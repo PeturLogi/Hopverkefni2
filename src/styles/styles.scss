@@ -18,8 +18,11 @@ html { /* stylelint-disable-line */
 
   // Font
   font-family: $font-main;
-  font-family: $font-head;
   font-size: 16px;
+}
+
+header { /* stylelint-disable-line */
+  font-family: $font-head;
 }
 
 img { /* stylelint-disable-line */
