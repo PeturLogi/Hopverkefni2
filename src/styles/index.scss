@@ -2,13 +2,14 @@
 
 .header__image {
   position: relative;
-  height: 15 * $gutter;
+  height: 13.5 * $gutter;
+  margin-bottom: $gutter;
   overflow: hidden;
   text-align: center;
-}
 
-.header__img {
-  width: 100%;
+  &__text {
+    font-size: 2em;
+  }
 }
 
 .image__layer {
@@ -28,6 +29,14 @@
   left: 50%;
 }
 
-.header__text {
-  font-size: 2em;
+.button__container {
+  display: flex;
+  justify-content: center;
+}
+
+.bnt {
+  background-color: $color-1;
+  border: $color-1 solid 1px;
+  border-radius: 5px;
+
 }
