@@ -1,5 +1,5 @@
 {
-  "name": "v10-synilausn",
+  "name": "hopverkefni2",
   "version": "1.0.0",
   "description": "v10",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "dev": "npm-run-all --parallel sass sass-watch browser-sync"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pétur Logi Pétursson",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.3",
