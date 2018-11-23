@@ -1,14 +1,23 @@
 @import "./config.scss";
 
-.header__image {
-  position: relative;
-  height: 13.5 * $gutter;
-  margin-bottom: $gutter;
-  overflow: hidden;
-  text-align: center;
+.header {
+  &__image {
+    position: relative;
+    height: 13.5 * $gutter;
+    margin-bottom: $gutter;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &__img {
+    width: 100%;
+  }
 
   &__text {
-    font-size: 3em;
+    display: flex;
+    width: 100%;
+    max-width: $max-width;
+    flex-direction: column;
   }
 }
 
