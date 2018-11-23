@@ -1,4 +1,5 @@
 import List from './lib/list';
+
 const JSON_DATA = './lectures.json';
 
 document.addEventListener('DOMContentLoaded', () => {
