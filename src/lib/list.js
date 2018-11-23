@@ -1,14 +1,12 @@
-import { empty } from './helpers';
-const JSON_DATA = './lectures.json';
+import { empty, fill } from './helpers';
 
 export default class List {
-  constructor() {
-    this.container = document.querySelector('.list');
+  constructor(page) {
+    this.container = page
   }
 
   load() {
     empty(this.container);
+    fill(this.container);
   }
-
-
 }
