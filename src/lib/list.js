@@ -1,4 +1,5 @@
 import { empty } from './helpers';
+const JSON_DATA = './lectures.json';
 
 export default class List {
   constructor() {
@@ -8,4 +9,6 @@ export default class List {
   load() {
     empty(this.container);
   }
+
+
 }
