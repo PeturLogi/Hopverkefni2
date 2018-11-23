@@ -1,12 +1,18 @@
-import { empty, fill } from './helpers';
+import { empty, fill } from './overviewHelp';
 
-export default class List {
+export default class Overview {
   constructor() {
     this.container = document.querySelector('.items');
   }
 
+  
   load() {
     empty(this.container);
     fill(this.container);
   }
+
+  // showAll () {}
+
+  // filter () {}
+    
 }
