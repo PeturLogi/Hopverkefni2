@@ -8,7 +8,7 @@
   text-align: center;
 
   &__text {
-    font-size: 2em;
+    font-size: 3em;
   }
 }
 
@@ -29,14 +29,22 @@
   left: 50%;
 }
 
-.button__container {
-  display: flex;
-  justify-content: center;
-}
+.button {
+  &__col {
+    display: flex;
+    justify-content: center;
+  }
 
-.bnt {
-  background-color: $color-1;
-  border: $color-1 solid 1px;
-  border-radius: 5px;
+  &__container {
+    display: flex;
+    justify-content: center;
+    max-width: $max-width;
+  }
 
+  &__btn {
+    margin-right: $gutter;
+    background-color: $color-4;
+    border: $color-1 solid 1px;
+    border-radius: 10px;
+  }
 }
