@@ -1,8 +1,8 @@
 import { empty, fill } from './helpers';
 
 export default class List {
-  constructor(page) {
-    this.container = page
+  constructor() {
+    this.container = document.querySelector('.items');
   }
 
   load() {

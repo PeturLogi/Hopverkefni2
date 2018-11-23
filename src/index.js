@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isLecturePage) {
     // asdf
   } else {
-    const list = new List(page);
+    const list = new List();
     list.load(page);
   }
 });
