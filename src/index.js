@@ -1,4 +1,5 @@
 import List from './lib/list';
+const JSON_DATA = './lectures.json';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
@@ -11,3 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
     list.load();
   }
 });
+
+

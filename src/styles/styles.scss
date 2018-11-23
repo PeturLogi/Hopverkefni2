@@ -16,7 +16,9 @@ html { /* stylelint-disable-line */
   overflow-x: hidden;
   overflow-y: scroll; // alltaf hafa y skrollbar
 
+  // Font
   font-family: $font-main;
+  font-family: $font-head;
   font-size: 16px;
 }
 
@@ -25,3 +27,4 @@ img { /* stylelint-disable-line */
 }
 
 // TODO import
+@import "./index.scss";
