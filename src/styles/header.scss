@@ -1,0 +1,35 @@
+@import "./config.scss";
+.header {
+    //Láta header stjórnast af stærð af gutter.
+  &__content {
+    @include columns(12);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-family: $font-head;
+    z-index: 2;
+  }
+  &__category {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-top: 3* $gutter;
+    margin-bottom: 0.5 * $gutter;
+    font-family: $font-head;
+  }
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 3* $gutter;
+    font-family: $font-head;
+  }
+  //Láta image containerinn fylla út í header.
+  &__image {
+    position: relative;
+    height: 13.5 * $gutter;
+    margin-bottom: $gutter;
+    overflow: hidden;
+  }
+}
