@@ -63,7 +63,7 @@ Fyrir efni fyrirlesturs er efni alltaf með:
 
 þar sem `type` getur verið:
 
-* `youtube`, `data` inniheldur hlekk á youtube myndband
+* `youtube`, `data` inniheldur hlekk á youtube myndband. Innifela skal mynband með `<iframe src="<URL>" frameborder="0" allowfullscreen="0"></iframe>`
 * `text`, `data` inniheldur gögn þar sem `\n` merkir á milli málsgreina, þ.e.a.s. texta skal birta innan `<p>`, skipt á `\n`
 * `quote`, `data` inniheldur tilvitnun, aukalega getur verið `attribute` með þeim sem vitnað er í
 * `image`, `data` inniheldur slóð á mynd, aukalega getur verið `caption` með texta með mynd
