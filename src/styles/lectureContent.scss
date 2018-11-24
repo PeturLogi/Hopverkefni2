@@ -1,0 +1,24 @@
+@import "config";
+
+.lecture {
+  display: flex;
+  width: 66.6666666666%;
+  margin-left: 10 * $gutter;
+  flex-direction: column;
+}
+
+.content {
+  // Það þarf að skoða þetta með iframe svo að allt content komist fyrir
+  &__youtube {
+    height: 22*$gutter;
+    padding-right: 0.5 * $gutter;
+    padding-left: 0.5 * $gutter;
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+  }
+
+  p { /* stylelint-disable-line */
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+  }
+}

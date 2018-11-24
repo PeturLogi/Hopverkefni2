@@ -1,21 +1,25 @@
 @import "./config.scss";
+
 .button {
-    &__col {
-      display: flex;
-      justify-content: center;
-    }
-  
-    &__container {
-      display: flex;
-      justify-content: center;
-      max-width: $max-width;
-    }
-  
-    &__btn {
-      margin-right: $gutter;
-      background-color: $color-4;
-      border: $color-1 solid 1px;
-      border-radius: 10px;
-    }
+  &__col {
+    display: flex;
+    justify-content: center;
   }
-  
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    max-width: $max-width;
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+  }
+
+  &__btn {
+    padding: 0.5 * $gutter;
+    margin-right: 2 * $gutter;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: $color-4;
+    border-radius: 0.5 * $gutter;
+  }
+}

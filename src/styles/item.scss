@@ -9,15 +9,17 @@
   background-color: $color-2;
 
   &__title {
+    padding-left: 0.5 * $gutter;
+    font-family: $font-head;
     font-size: 2em;
     font-weight: bold;
   }
 
   &__category {
+    padding-left: 0.5 * $gutter;
     text-transform: uppercase;
   }
 
-  &__image {
-
-  }
+  //&__image {
+  //}
 }
