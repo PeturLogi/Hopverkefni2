@@ -1,24 +1,37 @@
 @import "config";
 
+.lecture__row {
+  @include row;
+  flex-flow: row wrap;
+}
+
 .lecture {
-  display: flex;
-  width: 66.6666666666%;
-  margin-left: 10 * $gutter;
-  flex-direction: column;
+  @include columns(8);
+  @include offset-left(2);
 }
 
 .content {
   // Það þarf að skoða þetta með iframe svo að allt content komist fyrir
   &__youtube {
-    height: 22*$gutter;
-    padding-right: 0.5 * $gutter;
-    padding-left: 0.5 * $gutter;
+    width: 100%;
     margin-top: $gutter;
     margin-bottom: $gutter;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 177.7777777777778%;
+    }
   }
 
-  p { /* stylelint-disable-line */
-    margin-top: $gutter;
-    margin-bottom: $gutter;
+  &__text {
+    padding-left: 0.25 * $gutter;
+    margin-top: 0.5 * $gutter;
+    margin-bottom: 0.5 * $gutter;
   }
+
+  //p { /* stylelint-disable-line */
+  //  margin-top: $gutter;
+  //  margin-bottom: $gutter;
+  //}
 }
