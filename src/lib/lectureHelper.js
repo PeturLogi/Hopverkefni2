@@ -15,7 +15,7 @@ function findLecture(value, list) {
 
 export { empty, fillLecture };
 
-
+// Skilar html elementi fyrir type = youtube
 function youtubeContent(object) {
   const elType = 'iframe';
   const classAttribute = 'content__youtube';
@@ -26,6 +26,7 @@ function youtubeContent(object) {
   element.setAttribute('frameborder', "0")
   return element;
 }
+// Skilar html elementi fyrir type = text
 function textContent(object) {
   const elType = 'p';
   const classAttribute = 'content__text';
@@ -39,7 +40,7 @@ function textContent(object) {
   });
   return null;
 }
-
+// Skilar html elementi fyrir type = quote
 function quoteContent(object) {
   const elType = 'p';
   const classAttribute = 'content__quote';
@@ -47,7 +48,7 @@ function quoteContent(object) {
   const element = el(elType, classAttribute, asText(content));
   return element;
 }
-
+// Skilar html elementi fyrir type = image
 function imageContent(object) {
   const elType = 'img';
   const classAttribute = 'content__image';
@@ -56,7 +57,7 @@ function imageContent(object) {
   element.setAttribute('src', content);
   return element;
 }
-
+// Skilar html elementi fyrir type = heading
 function headingContent(object) {
   const elType = 'p';
   const classAttribute = 'content__heading';
@@ -64,7 +65,7 @@ function headingContent(object) {
   const element = el(elType, classAttribute, asText(content));
   return element;
 }
-
+// Skilar html elementi fyrir type = list
 function listContent(object) {
   const elType = 'ul';
   const classAttribute = 'content__list';
@@ -76,7 +77,7 @@ function listContent(object) {
   })
   return element;
 }
-
+// Skilar html elementi fyrir type = code
 function codeContent(object) {
   const elType = 'p';
   const classAttribute = 'content__code';
@@ -85,6 +86,7 @@ function codeContent(object) {
   return element;
 }
 
+// Fall sem skilar réttu html elementi fyrir gefinn object úr json fileinu
 function elType(dataObj) {
   const youtube = {
     type: 'youtube',

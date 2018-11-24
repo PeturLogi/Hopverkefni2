@@ -31,11 +31,14 @@ function asText(text) {
 }
 
 function asImage(imageURL) {
-  const container = document.createElement('img');
-  container.setAttribute('class', 'item__image');
-  const imgURL = `../${imageURL}`;
-  container.setAttribute('src', imgURL);
-  return container;
+  if (imageURL) {
+    const container = document.createElement('img');
+    container.setAttribute('class', 'item__image');
+    const imgURL = `../${imageURL}`;
+    container.setAttribute('src', imgURL);
+    return container;
+  }
+  return null;
 }
 
 export {
