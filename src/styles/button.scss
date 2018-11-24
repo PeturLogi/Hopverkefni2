@@ -19,5 +19,9 @@
     cursor: pointer;
     background-color: $color-4;
     border-radius: 0.5 * $gutter;
+    border: none;
+  }
+  &--clicked {
+    background-color: $color-5;
   }
 }
