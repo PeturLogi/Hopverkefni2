@@ -23,8 +23,9 @@ function youtubeContent(object) {
   const element = el(elType, classAttribute, null);
   element.setAttribute('src', object.data);
   element.setAttribute('allowfullscreen', "0");
-  element.setAttribute('frameborder', "0")
-  return element;
+  element.setAttribute('frameborder', "0");
+  const container = el('div', 'content__video', element);
+  return container;
 }
 // Skilar html elementi fyrir type = text
 function textContent(object) {
