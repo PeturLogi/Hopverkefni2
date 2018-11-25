@@ -2,14 +2,12 @@
 
 .items {
   &__row {
-    display: flex;
+    @include row;
     flex-flow: row wrap;
-    margin-right: -0.5 * $gutter;
-    margin-left: -0.5 * $gutter;
   }
 
   &__col {
-    width: 33.33333%;
+    @include columns(4);
     padding-right: 0.5 * $gutter;
     padding-left: 0.5 * $gutter;
     margin-top: $gutter;
