@@ -1,17 +1,24 @@
 @import "config";
 
-.lecture__row {
+/*.lecture__row {
   @include row;
   flex-flow: row wrap;
-}
+}*/
 
 .lecture {
-  @include columns(10);
-  @include offset-left(1);
+  &__row {
+    @include row;
+    flex-flow: row wrap;
+  }
 
-  @media (min-width: 700px) {
-    @include columns(8);
-    @include offset-left(2);
+  &__col {
+    @include columns(10);
+    @include offset-left(1);
+
+    @media (min-width: 700px) {
+      @include columns(8);
+      @include offset-left(2);
+    }
   }
 }
 
@@ -37,6 +44,8 @@
   &__text {
     margin-top: 0.5 * $gutter;
     margin-bottom: 0.5 * $gutter;
+    font-family: $font-main;
+    line-height: 1.5rem;
   }
 
   &__quote {
@@ -70,7 +79,8 @@
     margin-top: 2 * $gutter;
     margin-bottom: 2 * $gutter;
     unicode-bidi: embed;
-    font-family: monospace;
+    font-family: $font-head;
+    font-weight: 700;
     white-space: pre;
   }
 }
