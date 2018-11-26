@@ -1,4 +1,4 @@
-import { empty, fillLecture} from './lectureHelper';
+import { empty, fillLecture } from './lectureHelper';
 
 export default class Lecture {
   constructor() {

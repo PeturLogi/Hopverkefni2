@@ -1,19 +1,25 @@
-import { el, emptyElement, fetchJson, asText } from './helpers';
+import {
+  el,
+  emptyElement,
+  fetchJson,
+  asText,
+  isComplete,
+} from './helpers';
 
 function empty(element) {
   emptyElement(element);
 }
+
 function findLecture(value, list) {
   let correctLecture = null;
   list.forEach((lecture) => {
-    if (lecture.slug === value)  {
+    if (lecture.slug === value) {
       correctLecture = lecture;
     }
   });
   return correctLecture;
 }
 
-export { empty, fillLecture };
 
 // Skilar html elementi fyrir type = youtube
 function youtubeContent(object) {
@@ -88,7 +94,7 @@ function listContent(object) {
   content.forEach((listItem) => {
     const itemElement = el('li', 'List__text', asText(listItem));
     element.appendChild(itemElement);
-  })
+  });
   return element;
 }
 // Skilar html elementi fyrir type = code
@@ -100,72 +106,96 @@ function codeContent(object) {
   return element;
 }
 
+// Fall sem skilar slug nýverandi fyrirlesturs
+function getCurrentLectureSlug() {
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.get('slug');
+  return urlParams.get('slug');
+}
+
+// Fall sem keyrir ef smellt er á "klára fyrirlestur"
+function finishLecture(e) {
+  const lectureName = getCurrentLectureSlug();
+  window.localStorage.setItem(lectureName, 'true');
+  e.target.removeChild(e.target.childNodes[0]);
+  e.target.appendChild(asText('✓ Fyrirlestur kláraður'));
+}
+
+// fall sem skilar button sem sendir notanda aftur á forsíðu
+function returnButton() {
+  const element = el('button', 'content__return', asText('Til baka'));
+  element.setAttribute('href', '../');
+  return element;
+}
+
+// skilar html element af takka sem keyrir finishLecture ef hann er ekki búinn
+function finishLectureButton() {
+  const element = el('button', 'content__return', null);
+  if (isComplete(getCurrentLectureSlug())) {
+    element.appendChild(asText('✓ Fyrirlestur kláraður'));
+  } else {
+    element.appendChild(asText('Klára fyrirlestur'));
+  }
+  element.addEventListener('click', finishLecture);
+  return element;
+}
+
 // Fall sem skilar réttu html elementi fyrir gefinn object úr json fileinu
-function elType(dataObj) {
+function elementType(dataObj) {
   const youtube = {
     type: 'youtube',
-    contentMethod: (elemType, classAtt) => {
-      return youtubeContent(dataObj);
-    }
+    contentMethod: () => youtubeContent(dataObj),
   };
   const text = {
     type: 'text',
-    contentMethod: (elemType, classAtt) => {
-      return textContent(dataObj);
-    }
+    contentMethod: () => textContent(dataObj),
   };
   const quote = {
     type: 'quote',
-    contentMethod: (elemType, classAtt) => {
-      return quoteContent(dataObj);
-    }
+    contentMethod: () => quoteContent(dataObj),
   };
   const image = {
     type: 'image',
-    contentMethod: (elemType, classAtt) => {
-      return imageContent(dataObj);
-    }
+    contentMethod: () => imageContent(dataObj),
   };
   const heading = {
     type: 'heading',
-    contentMethod: (elemType, classAtt) => {
-      return headingContent(dataObj);
-    }
+    contentMethod: () => headingContent(dataObj),
   };
   const list = {
     type: 'list',
-    contentMethod: (elemType, classAtt) => {
-      return listContent(dataObj);
-    }
+    contentMethod: () => listContent(dataObj),
   };
   const code = {
     type: 'code',
-    contentMethod: (elemType, classAtt) => {
-      return codeContent(dataObj);
-    }
+    contentMethod: () => codeContent(dataObj),
   };
 
   const typeArray = [youtube, text, quote, image, heading, list, code];
   let returnElement = null;
   typeArray.forEach((elObj) => {
-    if(elObj.type == dataObj.type) {
-      returnElement = elObj.contentMethod(elObj.elType, elObj.classAttribute);
+    if (elObj.type === dataObj.type) {
+      returnElement = elObj.contentMethod();
     }
   });
   return returnElement;
 }
 
+// Fær inn json hlut með upplýsingar um fyrirlestur
+// býr til lecture elementin
 function createLectureElements(lectureData) {
   const container = document.querySelector('.lecture');
   lectureData.forEach((dataObj) => {
-    const contents = elType(dataObj);
+    const contents = elementType(dataObj);
     if (contents) {
       container.appendChild(contents);
     }
   });
+  container.appendChild(finishLectureButton());
+  container.appendChild(returnButton());
 }
 
-function fillLecture (lectureName) {
+function fillLecture(lectureName) {
   fetchJson().then((data) => {
     const list = data.lectures;
     const lecture = findLecture(lectureName, list);
@@ -174,3 +204,9 @@ function fillLecture (lectureName) {
     createLectureElements(lecture.content);
   });
 }
+
+
+export {
+  empty,
+  fillLecture,
+};
