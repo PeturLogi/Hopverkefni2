@@ -1,24 +1,80 @@
 @import "config";
 
+.lecture__row {
+  @include row;
+  flex-flow: row wrap;
+}
+
 .lecture {
-  display: flex;
-  width: 66.6666666666%;
-  margin-left: 10 * $gutter;
-  flex-direction: column;
+  @include columns(10);
+  @include offset-left(1);
+
+  @media (min-width: 700px) {
+    @include columns(8);
+    @include offset-left(2);
+  }
 }
 
 .content {
   // Það þarf að skoða þetta með iframe svo að allt content komist fyrir
-  &__youtube {
-    height: 22*$gutter;
-    padding-right: 0.5 * $gutter;
-    padding-left: 0.5 * $gutter;
+  &__video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
     margin-top: $gutter;
     margin-bottom: $gutter;
   }
 
-  p { /* stylelint-disable-line */
+  &__youtube {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    margin-top: 0.5 * $gutter;
+    margin-bottom: 0.5 * $gutter;
+  }
+
+  &__quote {
+    padding: $gutter;
+    margin-right: -$gutter;
+    margin-left: -$gutter;
+    background-color: $color-4;
+  }
+
+  &__image {
+    margin-top: 2 * $gutter;
+    margin-bottom: 2 * $gutter;
+  }
+
+  &__heading {
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+    font-family: $font-head;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__list {
     margin-top: $gutter;
     margin-bottom: $gutter;
   }
+
+  &__code {
+    display: block;
+    margin-top: 2 * $gutter;
+    margin-bottom: 2 * $gutter;
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre;
+  }
+}
+
+.List__text {
+  margin-top: 0.5 * $gutter;
+  margin-bottom: 0.5 * $gutter;
 }

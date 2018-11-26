@@ -14,12 +14,32 @@
     margin-bottom: $gutter;
   }
 
+  &__lContainer {
+    @include columns(2);
+    @include offset-left(5);
+    flex-direction: column;
+  }
+
   &__btn {
     padding: 0.5 * $gutter;
     margin-right: 2 * $gutter;
     font-size: 1.5em;
     font-weight: bold;
+    cursor: pointer;
     background-color: $color-4;
     border-radius: 0.5 * $gutter;
+    border: none;
+  }
+  &--clicked {
+    background-color: $color-5;
+  }
+
+  &__lecture {
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+    font-family: $font-main;
+    font-size: 1em;
+    background: none;
+    border: none;
   }
 }

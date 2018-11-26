@@ -25,12 +25,13 @@ function findLecture(value, list) {
 function youtubeContent(object) {
   const elType = 'iframe';
   const classAttribute = 'content__youtube';
-  // src="<URL>" frameborder="0" allowfullscreen="0"
+  // src='<URL>' frameborder='0' allowfullscreen='0'
   const element = el(elType, classAttribute, null);
   element.setAttribute('src', object.data);
   element.setAttribute('allowfullscreen', '0');
   element.setAttribute('frameborder', '0');
-  return element;
+  const container = el('div', 'content__video', element);
+  return container;
 }
 // Skilar html elementi fyrir type = text
 function textContent(object) {
@@ -48,20 +49,33 @@ function textContent(object) {
 }
 // Skilar html elementi fyrir type = quote
 function quoteContent(object) {
-  const elType = 'p';
+  const elType = 'div';
   const classAttribute = 'content__quote';
-  const content = object.data;
-  const element = el(elType, classAttribute, asText(content));
-  return element;
+  const contentText = object.data;
+  const contentAttribute = object.attribute;
+  const container = el(elType, classAttribute, null);
+  const text = el(elType, 'quote__text', asText(contentText));
+  const attribute = el(elType, 'quote__attribute', asText(contentAttribute));
+  container.appendChild(text);
+  container.appendChild(attribute);
+  return container;
 }
 // Skilar html elementi fyrir type = image
 function imageContent(object) {
-  const elType = 'img';
   const classAttribute = 'content__image';
-  const content = object.data;
-  const element = el(elType, classAttribute, null);
-  element.setAttribute('src', content);
-  return element;
+  const imgLink = object.data;
+  const imgCaption = object.caption;
+  const container = el('div', classAttribute, null)
+  const img = el('img', 'image__img content__img', null);
+  const protection = el('div', 'image__protection', null);
+  const caption = el('p', 'image__caption', asText(imgCaption));
+  container.appendChild(img);
+  container.appendChild(protection);
+  container.appendChild(caption);
+  img.setAttribute('src', imgLink);
+
+
+  return container;
 }
 // Skilar html elementi fyrir type = heading
 function headingContent(object) {
