@@ -1,17 +1,23 @@
 @import "./config.scss";
 
 .image {
-    &__img {
-        width: 100%;
-    }
-    &__protection {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        z-index: 1;
-        background-color: #fff;
-        opacity: 0.4;
-      }
+  &__img {
+    width: 100%;
+  }
+
+  &__protection {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    opacity: 0.4;
+  }
+
+  &__caption {
+    position: absolute;
+  }
+
 }

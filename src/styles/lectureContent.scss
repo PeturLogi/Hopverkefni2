@@ -47,8 +47,9 @@
   }
 
   &__image {
+    position: relative;
     margin-top: 2 * $gutter;
-    margin-bottom: 2 * $gutter;
+    margin-bottom: 3 * $gutter;
   }
 
   &__heading {
