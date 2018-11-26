@@ -1,3 +1,4 @@
+// Tæmir öll child elements í gefnu elementi
 function emptyElement(element) {
   if (!element) {
     return;
@@ -7,6 +8,13 @@ function emptyElement(element) {
   }
 }
 
+// Athugar hvort tiltekinn fyrirlestur sé merktur sem complete í local storage
+// skilar true ef merkt complete, false ef ekkert merkt eða merkt false
+function isComplete(slug) {
+  return window.localStorage.getItem(slug);
+}
+
+// Skilar fyrirlestraupplýsingum á json formi
 function fetchJson() {
   return fetch('../lectures.json')
     .then((response) => {
@@ -17,6 +25,7 @@ function fetchJson() {
     });
 }
 
+// Skilar elementi af týpu type, með class attribute className og inniheldur content
 function el(type, className, content) {
   const element = document.createElement(type);
   element.setAttribute('class', className);
@@ -26,10 +35,12 @@ function el(type, className, content) {
   return element;
 }
 
+// breytir streng í textNode sem setja má í element
 function asText(text) {
   return document.createTextNode(text);
 }
 
+// Skilar img elementi með tilheyrandi class attributes
 function asImage(imageURL) {
   if (imageURL) {
     const container = document.createElement('img');
@@ -47,4 +58,5 @@ export {
   fetchJson,
   asText,
   asImage,
+  isComplete,
 };

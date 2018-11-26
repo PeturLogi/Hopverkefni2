@@ -1,13 +1,13 @@
 import {
-  emptyElement, el, fetchJson, asText, asImage,
+  emptyElement, el, fetchJson, asText, asImage, isComplete,
 } from './helpers';
 
 function empty(element) {
   emptyElement(element);
 }
 
-function clicked(button) {
-  return button.classList.contains('button--clicked');
+function clicked(b) {
+  return b.classList.contains('button--clicked');
 }
 
 function button(name) {
@@ -42,11 +42,22 @@ function createOverviewElements(pageData) {
     if (notFiltered(page)) {
       const itemsCol = el('div', 'items__col', null);
       const item = el('div', 'item', null);
+      const itemInfo = el('div', 'item__info', null);
+      const itemText = el('div', 'item__text', null);
       const itemTitle = el('div', 'item__title', asText(page.title));
       const itemCategory = el('div', 'item__category', asText(page.category));
+      const itemComplete = el('div', 'item__complete', null);
+      if (isComplete(page.slug)) {
+        itemComplete.classList.add('item__complete--true');
+      } else {
+        itemComplete.classList.add('item__complete--false');
+      }
       const itemImage = el('div', 'item__image', asImage(page.thumbnail));
-      item.appendChild(itemTitle);
-      item.appendChild(itemCategory);
+      itemText.appendChild(itemTitle);
+      itemText.appendChild(itemCategory);
+      itemInfo.appendChild(itemText);
+      itemInfo.appendChild(itemComplete);
+      item.appendChild(itemInfo);
       item.appendChild(itemImage);
       itemsCol.appendChild(item);
       itemsRow.appendChild(itemsCol);

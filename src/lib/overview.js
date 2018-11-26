@@ -5,14 +5,8 @@ export default class Overview {
     this.container = document.querySelector('.items');
   }
 
-  
   load() {
     empty(this.container);
     fill(this.container);
   }
-
-  // showAll () {}
-
-  // filter () {}
-    
 }
