@@ -1,27 +1,5 @@
 @import "config";
 
-/*.lecture__row {
-  @include row;
-  flex-flow: row wrap;
-}*/
-
-.lecture {
-  &__row {
-    @include row;
-    flex-flow: row wrap;
-  }
-
-  &__col {
-    @include columns(10);
-    @include offset-left(1);
-
-    @media (min-width: 700px) {
-      @include columns(8);
-      @include offset-left(2);
-    }
-  }
-}
-
 .content {
   // Það þarf að skoða þetta með iframe svo að allt content komist fyrir
   &__video {
@@ -74,6 +52,11 @@
     margin-bottom: $gutter;
   }
 
+  /*&__li {
+      margin-top: 0.5 * $gutter;
+      margin-bottom: 0.5 * $gutter;
+  }*/
+
   &__code {
     display: block;
     margin-top: 2 * $gutter;
@@ -84,12 +67,8 @@
     white-space: pre;
   }
 }
-
+//Eyða þessu út og afkommenta &__li í .content
 .List__text {
   margin-top: 0.5 * $gutter;
   margin-bottom: 0.5 * $gutter;
-}
-
-.quote__text {
-  margin-bottom: $gutter;
 }

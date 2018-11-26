@@ -18,6 +18,9 @@
 
   &__caption {
     position: absolute;
+    font-family: $font-main;
+    font-style: italic;
+    line-height: 1.5rem;
   }
 
 }
