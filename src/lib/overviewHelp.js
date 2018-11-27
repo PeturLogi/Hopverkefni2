@@ -46,7 +46,7 @@ function createOverviewElements(pageData) {
       const itemText = el('div', 'item__text', null);
       const itemTitle = el('div', 'item__title', asText(page.title));
       const itemCategory = el('div', 'item__category', asText(page.category));
-      const itemComplete = el('p', 'item__complete', asText('&#10004'));
+      const itemComplete = el('p', 'item__complete', asText('✓'));
       if (isComplete(page.slug)) {
         itemComplete.classList.add('item__complete--true');
       } else {
