@@ -11,7 +11,7 @@ function emptyElement(element) {
 // Athugar hvort tiltekinn fyrirlestur sé merktur sem complete í local storage
 // skilar true ef merkt complete, false ef ekkert merkt eða merkt false
 function isComplete(slug) {
-  return window.localStorage.getItem(slug);
+  return (window.localStorage.getItem(slug) === 'true');
 }
 
 // Skilar fyrirlestraupplýsingum á json formi
