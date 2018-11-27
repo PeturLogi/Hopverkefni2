@@ -1,12 +1,12 @@
 @import "config";
 
 .lecture {
-  max-width: $max-width;
+  /*max-width: $max-width;
   margin: 0 auto;
   @media (max-width: $max-width - 1) {
     padding-right: $gutter;
     padding-left: $gutter;
-  }
+  }*/
   &__row {
     @include row;
     flex-flow: row wrap;

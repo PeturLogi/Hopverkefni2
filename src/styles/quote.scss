@@ -1,6 +1,10 @@
 @import "config";
-
-.quote__text {
+.quote {
+  font-family: $font-main;
+  &__text {
     margin-bottom: $gutter;
   }
-  
+  &__attribute {
+    font-style: italic;
+  }
+}
