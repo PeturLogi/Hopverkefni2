@@ -37,7 +37,7 @@ function youtubeContent(object) {
 function textContent(object) {
   const elType = 'p';
   const classAttribute = 'content__text';
-  const container = document.querySelector('.lecture');
+  const container = document.querySelector('.lecture__col');
   const rawString = object.data;
   const stringArray = rawString.split('\n');
   stringArray.forEach((tempString) => {
@@ -198,7 +198,7 @@ function updateHeader(lectureData) {
 // býr til lecture elementin
 function createLectureElements(lecture) {
   const lectureData = lecture.content;
-  const container = document.querySelector('.lecture');
+  const container = document.querySelector('.lecture__col');
   lectureData.forEach((dataObj) => {
     const contents = elementType(dataObj);
     if (contents) {

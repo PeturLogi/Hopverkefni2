@@ -7,10 +7,17 @@
   }
 
   &__col {
-    @include columns(4);
+    @include columns(12);
     padding-right: 0.5 * $gutter;
     padding-left: 0.5 * $gutter;
     margin-top: $gutter;
     margin-bottom: $gutter;
+    @media (min-width: 500px) {
+      @include columns(6);
+    }
+
+    @media (min-width: 900px) {
+      @include columns(4);
+    }
   }
 }
