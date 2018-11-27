@@ -115,8 +115,8 @@ function getCurrentLectureSlug() {
   return urlParams.get('slug');
 }
 
+// Uppfæra það sem stendur á button, miðað við local storage
 function updateFinishButton(lectureName) {
-  console.log(`Current ástand takka: ${window.localStorage.getItem(lectureName)}`);
   const buttonKlara = document.querySelector('.button__klara');
   if (window.localStorage.getItem(lectureName) === 'true') {
     buttonKlara.removeChild(buttonKlara.childNodes[0]);
