@@ -1,3 +1,15 @@
+* Til að keyra verkefnið skal farar í command promt og finna verkefnamöppu. Þegar komið er inn í verkefnamöppu skal sklá inn skipuinan "npm install". Næst skal skrifa "npm run dev" og þá keyrist skripta sem keyrir browser-sync, rollup  og node-sass.
+
+* Verkefninu er aðallega skipt upp í meginmöppuna "Hopverkefni2" en þar eru html síðurnar index og fyrirlestur. grid.css er að finna í meginmöppunni en öll önnur stylesheets er að finna í "src/styles" en styles.css vistast síðan "dist" möppuna. Allar scss skránnar eru skrifaðar eftir stylelint-config-primer. Json skrár er að finna í meginmöppunni en síðan er index.js að finna undir "src" möppu. Allar aðrar JavaScript skrár er að finna í "lib" möppunni.
+
+* Verkefnið var unnið af eftirfarandi aðilum, hér koma HÍ mail og github nöfn Sverrir Heiðar Davíðsson (shd4@hi.is) SverrirH, Pétur Logi Pétursson (plp2@hi.is) PeturLogi, Sigurður Andri Jóhannesson (saj48@hi.is) boxandri
+
+Linkur inná uglu heimasvæði sem inniheldur verkefnið: https://notendur.hi.is/~shd4/vefforritun/hopverkefni2/?fbclid=IwAR0atGx0wi_1SSY3kZCOMR2v27o0L37KflFtnPNQviT5E91JnDmzR-5TgsE
+
+
+
+############################################################################################
+
 # Hópverkefni 2
 
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
