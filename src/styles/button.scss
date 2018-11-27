@@ -30,9 +30,17 @@
     background-color: $color-4;
     border-radius: 0.5 * $gutter;
     border: none;
+    &:hover {
+      background-color: $color-3;
+      transition: transform $transition;
+    }
   }
   &--clicked {
     background-color: $color-5;
+    &:hover {
+      background-color: $color-6;
+      transition: transform $transition;
+    }
   }
 
   &__lecture {
