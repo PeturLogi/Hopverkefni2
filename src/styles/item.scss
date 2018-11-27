@@ -11,7 +11,7 @@
 
   &:hover {
     background-color: $color-2;
-    transition: transform $transition;
+    transition: background-color $transition;
   }
 
   &__text {
