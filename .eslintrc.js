@@ -4,6 +4,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    "linebreak-style": ["error", "windows"],
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'class-methods-use-this': 0,
   },

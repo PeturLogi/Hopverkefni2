@@ -12,7 +12,7 @@
     "sass": "node-sass --source-map-embed ./src/styles/styles.scss ./dist/styles.css",
     "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./dist/styles.css",
     "test": "concurrently npm:eslint npm:stylelint",
-    "dev": "concurrently npm:sass npm:sass-watch npm:browser-sync"
+    "dev": "concurrently npm:sass npm:sass-watch npm:browser-sync npm:rollup-watch"
   },
   "keywords": [],
   "author": "Pétur Logi Pétursson & Sverrir Heiðar Davíðsson",

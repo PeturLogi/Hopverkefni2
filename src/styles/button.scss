@@ -28,15 +28,18 @@
     font-weight: bold;
     cursor: pointer;
     background-color: $color-4;
+    border: 0;
     border-radius: 0.5 * $gutter;
-    border: none;
+
     &:hover {
       background-color: $color-3;
       transition: background-color $transition;
     }
   }
+
   &--clicked {
     background-color: $color-5;
+
     &:hover {
       background-color: $color-6;
       transition: background-color $transition;
@@ -49,6 +52,6 @@
     font-family: $font-main;
     font-size: 1em;
     background: none;
-    border: none;
+    border: 0;
   }
 }

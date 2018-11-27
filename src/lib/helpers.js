@@ -16,7 +16,7 @@ function isComplete(slug) {
 
 // Skilar fyrirlestraupplýsingum á json formi
 function fetchJson() {
-  return fetch('../lectures.json')
+  return fetch('lectures.json')
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -45,7 +45,7 @@ function asImage(imageURL) {
   if (imageURL) {
     const container = document.createElement('img');
     container.setAttribute('class', 'item__image');
-    const imgURL = `../${imageURL}`;
+    const imgURL = `${imageURL}`;
     container.setAttribute('src', imgURL);
     return container;
   }
