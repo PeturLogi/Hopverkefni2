@@ -1,4 +1,5 @@
 @import "config";
+
 .lecture {
   @include columns(8);
   @include offset-left(2);

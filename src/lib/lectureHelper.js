@@ -77,6 +77,7 @@ function imageContent(object) {
 
   return container;
 }
+
 // Skilar html elementi fyrir type = heading
 function headingContent(object) {
   const elType = 'p';
@@ -97,6 +98,7 @@ function listContent(object) {
   });
   return element;
 }
+
 // Skilar html elementi fyrir type = code
 function codeContent(object) {
   const elType = 'p';
@@ -113,31 +115,22 @@ function getCurrentLectureSlug() {
   return urlParams.get('slug');
 }
 
+function updateFinishButton(lectureName) {
+  console.log(`Current ástand takka: ${window.localStorage.getItem(lectureName)}`)
+}
+
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
 function finishLecture(e) {
   const lectureName = getCurrentLectureSlug();
-  window.localStorage.setItem(lectureName, 'true');
+  if (window.localStorage.getItem(lectureName) === 'true') {
+    window.localStorage.setItem(lectureName, 'false');
+    updateFinishButton(lectureName);
+  } else {
+    window.localStorage.setItem(lectureName, 'true');
+    updateFinishButton(lectureName);
+  }
   e.target.removeChild(e.target.childNodes[0]);
   e.target.appendChild(asText('✓ Fyrirlestur kláraður'));
-}
-
-// fall sem skilar button sem sendir notanda aftur á forsíðu
-function returnButton() {
-  const element = el('button', 'content__return', asText('Til baka'));
-  element.setAttribute('href', '../');
-  return element;
-}
-
-// skilar html element af takka sem keyrir finishLecture ef hann er ekki búinn
-function finishLectureButton() {
-  const element = el('button', 'content__return', null);
-  if (isComplete(getCurrentLectureSlug())) {
-    element.appendChild(asText('✓ Fyrirlestur kláraður'));
-  } else {
-    element.appendChild(asText('Klára fyrirlestur'));
-  }
-  element.addEventListener('click', finishLecture);
-  return element;
 }
 
 // Fall sem skilar réttu html elementi fyrir gefinn object úr json fileinu
@@ -170,7 +163,6 @@ function elementType(dataObj) {
     type: 'code',
     contentMethod: () => codeContent(dataObj),
   };
-
   const typeArray = [youtube, text, quote, image, heading, list, code];
   let returnElement = null;
   typeArray.forEach((elObj) => {
@@ -179,6 +171,16 @@ function elementType(dataObj) {
     }
   });
   return returnElement;
+}
+
+function updateHeader(lectureData) {
+  /*
+  const titleContainer = document.querySelector('.header__title');
+  const categoryContainer = document.querySelector('.header__category');
+  titleContainer.appendChild();
+  categoryContainer.appendChild
+  */
+ console.log('Útfæra eftir smá');
 }
 
 // Fær inn json hlut með upplýsingar um fyrirlestur
@@ -191,10 +193,11 @@ function createLectureElements(lectureData) {
       container.appendChild(contents);
     }
   });
-  container.appendChild(finishLectureButton());
-  container.appendChild(returnButton());
+  updateHeader(lectureData);
 }
 
+// Sækir json gögn fyrir tiltekinn fyrirlestur og bíður þar til
+// þau eru tilbúin til að kalla á viðeigandi smiði
 function fillLecture(lectureName) {
   fetchJson().then((data) => {
     const list = data.lectures;
