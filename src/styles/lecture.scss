@@ -1,18 +1,14 @@
 @import "config";
 .lecture {
-    &__row {
-      @include row;
-      flex-flow: row wrap;
-    }
-  
-    &__col {
-      @include columns(10);
-      @include offset-left(1);
-  
-      @media (min-width: 700px) {
-        @include columns(8);
-        @include offset-left(2);
-      }
-    }
+  @include columns(8);
+  @include offset-left(2);
+
+  @media (max-width: 800px) {
+    @include columns(10);
+    @include offset-left(1);
   }
-  
+  &__row {
+    @include row;
+    flex-flow: row wrap;
+  }
+}
