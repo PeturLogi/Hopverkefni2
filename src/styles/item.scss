@@ -18,6 +18,10 @@
     flex-direction: column-reverse;
   }
 
+  //&__info {
+  //  
+  //}
+
   &__title {
     padding-left: 0.5 * $gutter;
     font-family: $font-head;
@@ -30,7 +34,4 @@
     font-family: $font-head;
     text-transform: uppercase;
   }
-
-  //&__image {
-  //}
 }
