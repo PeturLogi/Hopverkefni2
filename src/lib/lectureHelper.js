@@ -77,6 +77,7 @@ function imageContent(object) {
 
   return container;
 }
+
 // Skilar html elementi fyrir type = heading
 function headingContent(object) {
   const elType = 'p';
@@ -92,11 +93,12 @@ function listContent(object) {
   const content = object.data;
   const element = el(elType, classAttribute, null);
   content.forEach((listItem) => {
-    const itemElement = el('li', 'List__text', asText(listItem));
+    const itemElement = el('li', 'content__li', asText(listItem));
     element.appendChild(itemElement);
   });
   return element;
 }
+
 // Skilar html elementi fyrir type = code
 function codeContent(object) {
   const elType = 'p';
@@ -113,31 +115,29 @@ function getCurrentLectureSlug() {
   return urlParams.get('slug');
 }
 
+// Uppfæra það sem stendur á button, miðað við local storage
+function updateFinishButton(lectureName) {
+  const buttonKlara = document.querySelector('.button__klara');
+  if (window.localStorage.getItem(lectureName) === 'true') {
+    buttonKlara.removeChild(buttonKlara.childNodes[0]);
+    buttonKlara.appendChild(asText('✓ Fyrirlestur kláraður'));
+  } else {
+    buttonKlara.removeChild(buttonKlara.childNodes[0]);
+    buttonKlara.appendChild(asText('Klára fyrirlestur'));
+  }
+}
+
+
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
 function finishLecture(e) {
   const lectureName = getCurrentLectureSlug();
-  window.localStorage.setItem(lectureName, 'true');
-  e.target.removeChild(e.target.childNodes[0]);
-  e.target.appendChild(asText('✓ Fyrirlestur kláraður'));
-}
-
-// fall sem skilar button sem sendir notanda aftur á forsíðu
-function returnButton() {
-  const element = el('button', 'content__return', asText('Til baka'));
-  element.setAttribute('href', '../');
-  return element;
-}
-
-// skilar html element af takka sem keyrir finishLecture ef hann er ekki búinn
-function finishLectureButton() {
-  const element = el('button', 'content__return', null);
-  if (isComplete(getCurrentLectureSlug())) {
-    element.appendChild(asText('✓ Fyrirlestur kláraður'));
+  if (window.localStorage.getItem(lectureName) === 'true') {
+    window.localStorage.setItem(lectureName, 'false');
+    updateFinishButton(lectureName);
   } else {
-    element.appendChild(asText('Klára fyrirlestur'));
+    window.localStorage.setItem(lectureName, 'true');
+    updateFinishButton(lectureName);
   }
-  element.addEventListener('click', finishLecture);
-  return element;
 }
 
 // Fall sem skilar réttu html elementi fyrir gefinn object úr json fileinu
@@ -170,7 +170,6 @@ function elementType(dataObj) {
     type: 'code',
     contentMethod: () => codeContent(dataObj),
   };
-
   const typeArray = [youtube, text, quote, image, heading, list, code];
   let returnElement = null;
   typeArray.forEach((elObj) => {
@@ -181,9 +180,24 @@ function elementType(dataObj) {
   return returnElement;
 }
 
+// FEsta listener á finish button
+function connectButtons() {
+  const finishButton = document.querySelector('.button__klara');
+  finishButton.addEventListener('click', finishLecture);
+}
+
+// Setur inn upplýsingar fyrir title og category í hausinn á fyrirlestri
+function updateHeader(lectureData) {
+  const titleContainer = document.querySelector('.header__title');
+  const categoryContainer = document.querySelector('.header__category');
+  titleContainer.appendChild(asText(lectureData.title));
+  categoryContainer.appendChild(asText(lectureData.category));
+}
+
 // Fær inn json hlut með upplýsingar um fyrirlestur
 // býr til lecture elementin
-function createLectureElements(lectureData) {
+function createLectureElements(lecture) {
+  const lectureData = lecture.content;
   const container = document.querySelector('.lecture__col');
   lectureData.forEach((dataObj) => {
     const contents = elementType(dataObj);
@@ -191,17 +205,20 @@ function createLectureElements(lectureData) {
       container.appendChild(contents);
     }
   });
-  container.appendChild(finishLectureButton());
-  container.appendChild(returnButton());
+  updateHeader(lecture);
+  connectButtons();
+  updateFinishButton(lecture.slug);
 }
 
+// Sækir json gögn fyrir tiltekinn fyrirlestur og bíður þar til
+// þau eru tilbúin til að kalla á viðeigandi smiði
 function fillLecture(lectureName) {
   fetchJson().then((data) => {
     const list = data.lectures;
     const lecture = findLecture(lectureName, list);
     return lecture;
   }).then((lecture) => {
-    createLectureElements(lecture.content);
+    createLectureElements(lecture);
   });
 }
 
