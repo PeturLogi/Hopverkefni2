@@ -93,7 +93,7 @@ function listContent(object) {
   const content = object.data;
   const element = el(elType, classAttribute, null);
   content.forEach((listItem) => {
-    const itemElement = el('li', 'List__text', asText(listItem));
+    const itemElement = el('li', 'content__li', asText(listItem));
     element.appendChild(itemElement);
   });
   return element;
@@ -116,8 +116,17 @@ function getCurrentLectureSlug() {
 }
 
 function updateFinishButton(lectureName) {
-  console.log(`Current ástand takka: ${window.localStorage.getItem(lectureName)}`)
+  console.log(`Current ástand takka: ${window.localStorage.getItem(lectureName)}`);
+  const buttonKlara = document.querySelector('.button__klara');
+  if (window.localStorage.getItem(lectureName) === 'true') {
+    buttonKlara.removeChild(buttonKlara.childNodes[0]);
+    buttonKlara.appendChild(asText('✓ Fyrirlestur kláraður'));
+  } else {
+    buttonKlara.removeChild(buttonKlara.childNodes[0]);
+    buttonKlara.appendChild(asText('Klára fyrirlestur'));
+  }
 }
+
 
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
 function finishLecture(e) {
@@ -129,8 +138,6 @@ function finishLecture(e) {
     window.localStorage.setItem(lectureName, 'true');
     updateFinishButton(lectureName);
   }
-  e.target.removeChild(e.target.childNodes[0]);
-  e.target.appendChild(asText('✓ Fyrirlestur kláraður'));
 }
 
 // Fall sem skilar réttu html elementi fyrir gefinn object úr json fileinu
@@ -173,19 +180,24 @@ function elementType(dataObj) {
   return returnElement;
 }
 
+// FEsta listener á finish button
+function connectButtons() {
+  const finishButton = document.querySelector('.button__klara');
+  finishButton.addEventListener('click', finishLecture);
+}
+
+// Setur inn upplýsingar fyrir title og category í hausinn á fyrirlestri
 function updateHeader(lectureData) {
-  /*
   const titleContainer = document.querySelector('.header__title');
   const categoryContainer = document.querySelector('.header__category');
-  titleContainer.appendChild();
-  categoryContainer.appendChild
-  */
- console.log('Útfæra eftir smá');
+  titleContainer.appendChild(asText(lectureData.title));
+  categoryContainer.appendChild(asText(lectureData.category));
 }
 
 // Fær inn json hlut með upplýsingar um fyrirlestur
 // býr til lecture elementin
-function createLectureElements(lectureData) {
+function createLectureElements(lecture) {
+  const lectureData = lecture.content;
   const container = document.querySelector('.lecture');
   lectureData.forEach((dataObj) => {
     const contents = elementType(dataObj);
@@ -193,7 +205,9 @@ function createLectureElements(lectureData) {
       container.appendChild(contents);
     }
   });
-  updateHeader(lectureData);
+  updateHeader(lecture);
+  connectButtons();
+  updateFinishButton(lecture.slug);
 }
 
 // Sækir json gögn fyrir tiltekinn fyrirlestur og bíður þar til
@@ -204,7 +218,7 @@ function fillLecture(lectureName) {
     const lecture = findLecture(lectureName, list);
     return lecture;
   }).then((lecture) => {
-    createLectureElements(lecture.content);
+    createLectureElements(lecture);
   });
 }
 
