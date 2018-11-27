@@ -37,7 +37,7 @@ function youtubeContent(object) {
 function textContent(object) {
   const elType = 'p';
   const classAttribute = 'content__text';
-  const container = document.querySelector('.lecture');
+  const container = document.querySelector('.lecture__col');
   const rawString = object.data;
   const stringArray = rawString.split('\n');
   stringArray.forEach((tempString) => {
@@ -184,7 +184,7 @@ function elementType(dataObj) {
 // Fær inn json hlut með upplýsingar um fyrirlestur
 // býr til lecture elementin
 function createLectureElements(lectureData) {
-  const container = document.querySelector('.lecture');
+  const container = document.querySelector('.lecture__col');
   lectureData.forEach((dataObj) => {
     const contents = elementType(dataObj);
     if (contents) {

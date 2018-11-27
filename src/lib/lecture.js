@@ -2,7 +2,7 @@ import { empty, fillLecture } from './lectureHelper';
 
 export default class Lecture {
   constructor() {
-    this.container = document.querySelector('.lecture');
+    this.container = document.querySelector('.lecture__col');
   }
 
   load() {
