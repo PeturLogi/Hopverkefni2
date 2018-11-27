@@ -3,7 +3,6 @@ import {
   emptyElement,
   fetchJson,
   asText,
-  isComplete,
 } from './helpers';
 
 function empty(element) {
@@ -64,15 +63,18 @@ function quoteContent(object) {
 function imageContent(object) {
   const imgLink = object.data;
   const imgCaption = object.caption;
-  const container = el('div', 'content__image', null)
+  const container = el('div', 'content__image', null);
   const img = el('img', 'image__img content__img', null);
   const protection = el('div', 'image__protection', null);
-  const caption = el('p', 'image__caption', asText(imgCaption));
+
   const imgAndProt = el('div', 'image__container', null);
   imgAndProt.appendChild(img);
   imgAndProt.appendChild(protection);
   container.appendChild(imgAndProt);
-  container.appendChild(caption);
+  if (imgCaption) {
+    const caption = el('p', 'image__caption', asText(imgCaption));
+    container.appendChild(caption);
+  }
   img.setAttribute('src', imgLink);
   return container;
 }
@@ -126,15 +128,21 @@ function updateFinishButton(lectureName) {
   }
 }
 
+// uppfærir nöfn af local variables þar til það fer í gegn, ef það er connectivity issue
+function updateValueLocal(name, value) {
+  while (window.localStorage.getItem(name) !== value) {
+    window.localStorage.setItem(name, value);
+  }
+}
 
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
 function finishLecture(e) {
   const lectureName = getCurrentLectureSlug();
   if (window.localStorage.getItem(lectureName) === 'true') {
-    window.localStorage.setItem(lectureName, 'false');
+    updateValueLocal(lectureName, 'false');
     updateFinishButton(lectureName);
   } else {
-    window.localStorage.setItem(lectureName, 'true');
+    updateValueLocal(lectureName, 'true');
     updateFinishButton(lectureName);
   }
 }
@@ -192,7 +200,9 @@ function updateHeader(lectureData) {
   const imageContainer = document.querySelector('.header__img');
   titleContainer.appendChild(asText(lectureData.title));
   categoryContainer.appendChild(asText(lectureData.category));
-  imageContainer.setAttribute('src', lectureData.image);
+  if (lectureData.image) {
+    imageContainer.setAttribute('src', lectureData.image);
+  }
 }
 
 // Fær inn json hlut með upplýsingar um fyrirlestur
