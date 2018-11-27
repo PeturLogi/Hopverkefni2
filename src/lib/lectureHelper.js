@@ -62,19 +62,18 @@ function quoteContent(object) {
 }
 // Skilar html elementi fyrir type = image
 function imageContent(object) {
-  const classAttribute = 'content__image';
   const imgLink = object.data;
   const imgCaption = object.caption;
-  const container = el('div', classAttribute, null)
+  const container = el('div', 'content__image', null)
   const img = el('img', 'image__img content__img', null);
   const protection = el('div', 'image__protection', null);
   const caption = el('p', 'image__caption', asText(imgCaption));
-  container.appendChild(img);
-  container.appendChild(protection);
+  const imgAndProt = el('div', 'image__container', null);
+  imgAndProt.appendChild(img);
+  imgAndProt.appendChild(protection);
+  container.appendChild(imgAndProt);
   container.appendChild(caption);
   img.setAttribute('src', imgLink);
-
-
   return container;
 }
 
@@ -190,8 +189,10 @@ function connectButtons() {
 function updateHeader(lectureData) {
   const titleContainer = document.querySelector('.header__title');
   const categoryContainer = document.querySelector('.header__category');
+  const imageContainer = document.querySelector('.header__img');
   titleContainer.appendChild(asText(lectureData.title));
   categoryContainer.appendChild(asText(lectureData.category));
+  imageContainer.setAttribute('src', lectureData.image);
 }
 
 // Fær inn json hlut með upplýsingar um fyrirlestur
