@@ -136,6 +136,10 @@ function updateValueLocal(name, value) {
 }
 
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
+// Geri disable error sem kemur fyrir notkun á 'e' fyrir
+// event hlutinn. Þetta er því annars ruglast virknin fyrir
+// event listenera
+// eslint-disable-next-line no-unused-vars
 function finishLecture(e) {
   const lectureName = getCurrentLectureSlug();
   if (window.localStorage.getItem(lectureName) === 'true') {
