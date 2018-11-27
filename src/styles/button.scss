@@ -32,14 +32,14 @@
     border: none;
     &:hover {
       background-color: $color-3;
-      transition: transform $transition;
+      transition: background-color $transition;
     }
   }
   &--clicked {
     background-color: $color-5;
     &:hover {
       background-color: $color-6;
-      transition: transform $transition;
+      transition: background-color $transition;
     }
   }
 
