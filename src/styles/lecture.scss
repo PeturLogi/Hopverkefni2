@@ -10,13 +10,13 @@
   &__col {
     @include columns(12);
 
-    /*@media (min-width: 600px) {
+    @media (min-width: 600px) {
       @include columns(10);
       @include offset-left(1);
     }
     @media (max-width: 1000px) {
       @include columns(8);
       @include offset-left(2);
-    }*/
+    }
   }
 }
