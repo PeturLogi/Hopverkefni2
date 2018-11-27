@@ -15,12 +15,24 @@
 
   &__text {
     display: flex;
+    //width: 80%;
     flex-direction: column-reverse;
   }
 
-  //&__info {
-  //  
-  //}
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__complete {
+    width: 15%;
+    font-size: 3rem;
+    color: $color-5;
+  }
+
+  &__complete--false {
+    display: none;
+  }
 
   &__title {
     padding-left: 0.5 * $gutter;
