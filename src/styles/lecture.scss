@@ -1,27 +1,22 @@
 @import "config";
 
 .lecture {
-  /*max-width: $max-width;
   margin: 0 auto;
-  @media (max-width: $max-width - 1) {
-    padding-right: $gutter;
-    padding-left: $gutter;
-  }*/
+  
   &__row {
     @include row;
     flex-flow: row wrap;
   }
   &__col {
     @include columns(12);
-    @include offset-left(0);
 
-    @media (min-width: 500px) {
+    /*@media (min-width: 600px) {
       @include columns(10);
       @include offset-left(1);
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       @include columns(8);
       @include offset-left(2);
-    }
+    }*/
   }
 }
