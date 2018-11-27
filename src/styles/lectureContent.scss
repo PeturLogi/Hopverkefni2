@@ -53,10 +53,10 @@
     margin-bottom: $gutter;
   }
 
-  /*&__li {
-      margin-top: 0.5 * $gutter;
-      margin-bottom: 0.5 * $gutter;
-  }*/
+  &__li {
+    margin-top: 0.5 * $gutter;
+    margin-bottom: 0.5 * $gutter;
+  }
 
   &__code {
     display: block;
@@ -67,9 +67,4 @@
     font-weight: 700;
     white-space: pre;
   }
-}
-//Eyða þessu út og afkommenta &__li í .content
-.List__text {
-  margin-top: 0.5 * $gutter;
-  margin-bottom: 0.5 * $gutter;
 }
