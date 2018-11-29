@@ -31,7 +31,7 @@
   // Láta image containerinn fylla út í header.
   &__image {
     position: relative;
-    height: 13.5 * $gutter;
+    max-height: 13.5 * $gutter;
     margin-bottom: $gutter;
     overflow: hidden;
   }
