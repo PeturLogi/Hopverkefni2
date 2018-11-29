@@ -12,7 +12,7 @@
     padding-left: 0.5 * $gutter;
     margin-top: $gutter;
     margin-bottom: $gutter;
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       @include columns(6);
     }
 

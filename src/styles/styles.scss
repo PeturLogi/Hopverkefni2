@@ -39,6 +39,10 @@ header { /* stylelint-disable-line */
 
 img { /* stylelint-disable-line */
   max-width: 100%;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 }
 
 // TODO import

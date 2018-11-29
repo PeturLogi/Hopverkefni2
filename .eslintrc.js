@@ -4,7 +4,7 @@ module.exports = {
     browser: true
   },
   rules: {
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "windows"], // til að laga LF vs CRLF errora
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
     'class-methods-use-this': 0,
   },

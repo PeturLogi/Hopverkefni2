@@ -3,9 +3,10 @@
 .item {
   display: flex;
   height: 100%;
-  padding-bottom: $gutter;
+  padding-bottom: $gutter * 0.5;
   cursor: pointer;
   flex-direction: column-reverse;
+  justify-content: space-between;
   flex: 1;
   background-color: $color-3;
 
@@ -26,8 +27,11 @@
   }
 
   &__complete {
-    width: 15%;
+    margin: auto $gutter;
+    //width: 15%;
+    font-family: $font-main;
     font-size: 3rem;
+    font-weight: 700;
     color: $color-5;
   }
 
@@ -38,13 +42,14 @@
   &__title {
     padding-left: 0.5 * $gutter;
     font-family: $font-head;
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: bold;
   }
 
   &__category {
     padding-left: 0.5 * $gutter;
     font-family: $font-head;
+    font-size: 1rem;
     text-transform: uppercase;
   }
 }

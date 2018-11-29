@@ -10,8 +10,6 @@
     display: flex;
     justify-content: center;
     max-width: $max-width;
-    margin-top: $gutter;
-    margin-bottom: $gutter;
   }
 
   &__lContainer {
@@ -24,7 +22,7 @@
     display: block;
     padding: 0.5 * $gutter;
     margin: 0 $gutter;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     background-color: $color-4;
@@ -49,8 +47,9 @@
   &__lecture {
     margin-top: $gutter;
     margin-bottom: $gutter;
-    font-family: $font-main;
-    font-size: 1em;
+    font-family: $font-head;
+    font-size: 1rem;
+    font-weight: 700;
     background: none;
     border: 0;
   }

@@ -3,7 +3,6 @@
 .header {
   // Láta header stjórnast af stærð af gutter.
   &__content {
-    @include columns(12);
     position: absolute;
     z-index: 2;
     width: 100%;
@@ -24,11 +23,12 @@
   }
 
   &__title {
-    margin-bottom: 3* $gutter;
+    margin-bottom: $gutter * 3;
     font-family: $font-head;
     font-size: 3rem;
   }
-  //Láta image containerinn fylla út í header.
+
+  // Láta image containerinn fylla út í header.
   &__image {
     position: relative;
     height: 13.5 * $gutter;
