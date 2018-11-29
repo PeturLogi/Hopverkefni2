@@ -4,8 +4,7 @@
 
 * Verkefnið var unnið af eftirfarandi aðilum, hér koma HÍ mail og github nöfn Sverrir Heiðar Davíðsson (shd4@hi.is) SverrirH, Pétur Logi Pétursson (plp2@hi.is) PeturLogi, Sigurður Andri Jóhannesson (saj48@hi.is) boxandri
 
-Linkur inná uglu heimasvæði sem inniheldur verkefnið: https://notendur.hi.is/~shd4/vefforritun/hopverkefni2/?fbclid=IwAR0atGx0wi_1SSY3kZCOMR2v27o0L37KflFtnPNQviT5E91JnDmzR-5TgsE
-
+Linkur inná uglu heimasvæði sem inniheldur verkefnið: https://notendur.hi.is/~saj48/vefforritun/Hopverkefni2/
 
 
 ############################################################################################
