@@ -2,11 +2,12 @@
 
 .lecture {
   margin: 0 auto;
-  
+
   &__row {
     @include row;
     flex-flow: row wrap;
   }
+
   &__col {
     @include columns(12);
 

@@ -28,8 +28,8 @@ main {
   margin: 0 auto;
 
   @media (min-width: $max-width) {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -39,6 +39,10 @@ header { /* stylelint-disable-line */
 
 img { /* stylelint-disable-line */
   max-width: 100%;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 }
 
 // TODO import

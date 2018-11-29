@@ -136,7 +136,7 @@ function updateValueLocal(name, value) {
 }
 
 // Fall sem keyrir ef smellt er á "klára fyrirlestur"
-function finishLecture(e) {
+function finishLecture() { // Tók út e útaf eslint bað um það
   const lectureName = getCurrentLectureSlug();
   if (window.localStorage.getItem(lectureName) === 'true') {
     updateValueLocal(lectureName, 'false');
